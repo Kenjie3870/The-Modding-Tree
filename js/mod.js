@@ -24,11 +24,13 @@ let changelog = `<h1>changelog</h1><br>
 		<h6>- subtabs were made to organize stuff<br></h6>
 		<h5><b>known insects</b></h5>
 		<h6>== automation doesn't work<br></h6>
+		<h6>== <b>Buyable m21</b>'s second effect doesn't work<br></h6>
 	<h4>v0.1b</h4>
 		<h6>- organized it into microtabs and made a new subtab<br></h6> 
 		<h6>- changed the changelog and the version appropiately<br></h6> 
 		<h5><b>known insects</b><h5>
 		<h6>== automation still doesn't work<br></h6>
+		<h6>== <b>Buyable m21</b>'s second effect still doesn't work either<br></h6>
 		<h6>== infoboxes don't show up in effects subtab, just the other text and buttons</h6>`
 
 let winText = `ez amirite... well good job for completing version ${VERSION.num} of this bad game`
