@@ -1,13 +1,13 @@
 let modInfo = {
-	name: "The ??? Tree",
-	id: "mymod",
-	author: "nobody",
-	pointsName: "points",
-	discordName: "",
+	name: "small layers tree",
+	id: "Very Small Tree",
+	author: "somebody that is not pog",
+	pointsName: "planck lengths",
+	discordName: "this doesn't exist",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	
-	offlineLimit: 1,  // In hours
+	offlineLimit: 8,  // In hours
 }
 
 // Set your version in num and name
@@ -21,7 +21,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added things.<br>
 		- Added stuff.`
 
-let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
+let winText = `ez amirite... well good job for completing version ${VERSION.num} of this bad game`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
@@ -32,16 +32,19 @@ function getStartPoints(){
 }
 
 // Determines if it should show points/sec
-function canGenPoints(){
-	return true
-}
+function canGenPoints(){return true}
 
 // Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
-
-	let gain = new Decimal(1)
+	let gain = new Decimal(1).mul(buyableEffect('m',11))
+	if(hasUpgrade('m',11)) gain = gain.add(upgradeEffect('m',11))
+	if(hasUpgrade('m',21)) gain = gain.mul(upgradeEffect('m',21))
+	if(inChallenge('m',11)) gain = gain.pow(0.5)
+	if(inChallenge('m',22)) gain = gain.pow(0.33)
+	if(hasChallenge('m',22)) gain = gain.pow(1.11)
+	if(inChallenge('m',31)) gain = gain.pow(0.5).pow(0.5)
 	return gain
 }
 
@@ -51,11 +54,12 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+	function() {if(inChallenge('m',11)) return "You are in an <b>m-layer challenge</b>"}
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new Decimal("e12345678"))
 }
 
 

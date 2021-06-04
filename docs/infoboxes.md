@@ -30,3 +30,28 @@ Features:
 - layer: **assigned automagically**. It's the same value as the name of this layer, so you can do `player[this.layer].points` or similar
 
 - id: **assigned automagically**. It's the "key" which the bar was stored under, for convenient access. The infobox in the example's id is "lore".
+
+```js
+infoboxes: {
+        boxone: {
+            title: "Formula for Points",
+            body() {return "<b>1</b>"},
+            unlocked() {return !hasUpgrade('m',11)}
+        },
+        boxtwo: {
+            title: "Formula for Points",
+            body() {return "<b>1 + (Makers + 2) ^ 0.5</b>"},
+            unlocked() {return hasUpgrade('m',11) && !hasUpgrade('m',12)}
+        },
+        boxthree: {
+            title: "Formula for Points",
+            body() {return "<b>1 + (Makers + 2) ^ (0.75)</b>"},
+            unlocked() {return hasUpgrade('m',12) && !hasUpgrade('m',13)}
+        },
+        boxfour: {
+            title: "Formula for Points",
+            body() {return "<b>1 + (Makers + 2) ^ (0.9)</b>"},
+            unlocked() {return hasUpgrade('m',13)}
+        }
+    }
+```
