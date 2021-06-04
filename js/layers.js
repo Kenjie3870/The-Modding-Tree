@@ -26,28 +26,31 @@ addLayer("m", {
     },
     row: 0,
     hotkeys: [
-        {key: "m", description: "<b>M</b> - Makes a maker", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "m", description: "M - Makes a maker", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ], 
     layerShown(){return true},
     passiveGeneration() {if(hasUpgrade('m',32)) return new Decimal(5)},
     automate() {player[this.layer].buyables[11]},
 
-    tabFormat: {
-        "Main": {
-            content: ["main-display",
-            ["prestige-button", function() {return "With your godlike powers, make"}],
-            ["display-text", function() {return "You have <b>"+format(player.points)+"</b> PL."}],
-            "milestones","upgrades"]
-        },
-        "Main II": {
-            content: ["main-display",
-            ["prestige-button", function() {return "With your godlike powers, make"}],
-            ["display-text", function() {return "You have <b>"+format(player.points)+"</b> PL."}],
-            "buyables","challenges"],
-            unlocked() {return hasUpgrade('m',31)}
+    microtabs: {
+        stuff: {
+            "Buyables": { content: ["buyables"], unlocked() {return hasUpgrade('m',32)} },
+            "Challenges": { content: ["challenges"], unlocked() {return hasUpgrade('m',31)} },
+            "Milestone": { content: ["milestones"], unlocked() {return hasUpgrade('m',32)} },
+            "Upgrades": { content: ["upgrades"] },
         }
     },
-
+    
+    tabFormat: {
+        "Main": {
+            content: ["main-display","prestige-button",
+            ["display-text", function() {return "You have <b>"+format(player.points)+"</b> PL."}],["microtabs","stuff"]]
+        },
+        "Effects": {
+            content: ["main-display",["display-text", function() {return "You have <b>"+format(player.points)+"</b> PL."},["infobox","mlbe"]]]
+        }
+    },
+    
     upgrades: {
         11: {
             description: "<b>m11: Maker?</b><br>Make makers useful.<br>PL gain is affected by Makers",
@@ -94,7 +97,7 @@ addLayer("m", {
             unlocked() {return hasUpgrade('m',12)}
         },
         21: {
-            description: "<b>m21: Finally!</b><br>PL gain is doubled",
+            description: "<b>m21: Finally!</b><br>PL gain is multiplied",
             cost: new Decimal(10),
             effect() {
                 let x = new Decimal(2)
@@ -366,6 +369,14 @@ addLayer("m", {
             done() {return getBuyableAmount('m',13).gte(3) && hasChallenge('m',31)},
             unlocked() {return hasChallenge('m',31)},
             toggles: [["m","auto"]]
+        }
+    },
+
+    infobox: {
+        mlbe: {
+            mlbe_one_one: {body() {return "<b>m11</b> - adds "+format(upgradeEffect('m',11))+" to PL gain"}},
+            mlbe_one_two: {body() {return "<b>m12</b> - adds "+format(upgradeEffect('m',12))+" to <b>m11</b>'s effect exponent"}, unlocked() {return hasUpgrade('m',11)}},
+            mlbe_one_thr: {body() {return "<b>m13</b> - adds "+format(upgradeEffect('m',13))+" to <b>m12</b>'s effect exponent"}, unlocked() {return hasUpgrade('m',12)}}
         }
     }
 })
