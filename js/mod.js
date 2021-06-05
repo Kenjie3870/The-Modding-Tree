@@ -1,7 +1,7 @@
 let modInfo = {
 	name: "small layers tree",
 	id: "Very Small Tree",
-	author: "somebody that is not pog",
+	author: "not pog",
 	pointsName: "planck lengths",
 	discordName: "this doesn't exist",
 	discordLink: "",
@@ -12,26 +12,31 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1b",
-	name: "make something pls",
+	num: "0.1c",
+	name: "the hrm",
 }
 
 let changelog = `<h1>changelog</h1><br>
 	<h2>v0.0</h2><br>
-		<h6> - made this mod<br></h6>
+		made this mod <br>
 	<h3>v0.1a</h3><br>
-		<h6> - content was added like the <b>m layer</b>.<br></h6>
-		<h6>- subtabs were made to organize stuff<br></h6>
-		<h5><b>known insects</b></h5>
-		<h6>== automation doesn't work<br></h6>
-		<h6>== <b>Buyable m21</b>'s second effect doesn't work<br></h6>
-	<h4>v0.1b</h4>
-		<h6>- organized it into microtabs and made a new subtab<br></h6> 
-		<h6>- changed the changelog and the version appropiately<br></h6> 
-		<h5><b>known insects</b><h5>
-		<h6>== automation still doesn't work<br></h6>
-		<h6>== <b>Buyable m21</b>'s second effect still doesn't work either<br></h6>
-		<h6>== infoboxes don't show up in effects subtab, just the other text and buttons</h6>`
+		content was added to the m layer.<br>
+		subtabs were made to organize stuff<br>
+		<b>=== known insects ===</b><br>
+		automation doesn't work<br>
+		Buyable m21's second effect doesn't work<br>
+	<h3>v0.1b</h3><br>
+		organized it into microtabs and made a new subtab<br>
+		changed the changelog and the version appropiately<br>
+		<b>=== known insects ===</b><br>
+		automation still doesn't work<br>
+		Buyable m21's second effect still doesn't work either<br>
+		infoboxes don't show up in effects subtab, just the other text and buttons<br>
+	<h3>v0.1c</h3><br>
+		redid the changelog again<br>
+		a bit of content<br>
+		changed some display and fixed all known bugs from before<br>
+		new layer when`
 
 let winText = `ez amirite... well good job for completing version ${VERSION.num} of this bad game`
 
@@ -66,12 +71,12 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if(inChallenge('m',11)) return "You are in an <b>m-layer challenge</b>"}
+	function() {return "Endgame: 15,000,000 Makers"}
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e12345678"))
+	return player["m"].points.gte(15e6)
 }
 
 
