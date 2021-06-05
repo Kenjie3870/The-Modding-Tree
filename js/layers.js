@@ -488,5 +488,5 @@ addLayer("x", {
     hotkeys: [
         {key: "x", description: "X - X", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ], 
-    layerShown(){return player["m"].points.gte(15e6)},
+    layerShown(){return hasUpgrade('m',43)},
 })
