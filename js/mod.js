@@ -37,7 +37,7 @@ let changelog = `<h1>changelog</h1><br>
 		a bit of content<br>
 		changed some display and fixed all known bugs from before<br>
 		new layer when<br>
-	<h3>v0.2<h3><br>
+	<h3>v0.2</h3><br>
 		mm yes new layer<br>
 		added some stuff<br>
 		<b>=== known insects ===</b><br>
