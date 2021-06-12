@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.2",
-	name: "colorful",
+	num: "0.2b",
+	name: "color full",
 }
 
 let changelog = `<h1>changelog</h1><br>
@@ -37,13 +37,15 @@ let changelog = `<h1>changelog</h1><br>
 		a bit of content<br>
 		changed some display and fixed all known bugs from before<br>
 		new layer when<br>
-	<h3>v0.2</h3><br>
+	<h3>v0.2a</h3><br>
 		mm yes new layer<br>
 		added some stuff<br>
 		<b>=== known insects ===</b><br>
 		reloading after getting a certain upgrade gives a random boost to pl<br>
 		if you have m43 and don't see another layer, put <i>player.d.unlocked = true</i> in console<br>
-		d resetting m doesnt work`
+		d resetting m doesnt work<br>
+	<h3>v0.2b</h3><br>
+		some suggestions and bug fixes in tmt dc were taken`
 
 let winText = `ez amirite... well good job for completing version ${VERSION.num} - ${VERSION.name} of this bad game`
 
