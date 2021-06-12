@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1c",
-	name: "the hrm",
+	num: "0.2",
+	name: "colorful",
 }
 
 let changelog = `<h1>changelog</h1><br>
@@ -36,9 +36,15 @@ let changelog = `<h1>changelog</h1><br>
 		redid the changelog again<br>
 		a bit of content<br>
 		changed some display and fixed all known bugs from before<br>
-		new layer when`
+		new layer when<br>
+	<h3>v0.2<h3><br>
+		mm yes new layer<br>
+		added some stuff<br>
+		<b>=== known insects ===</b><br>
+		reloading after getting a certain upgrade gives a random boost to pl<br>
+		if you have m43 and don't see another layer, put <i>player.d.unlocked = true</i> in console`
 
-let winText = `ez amirite... well good job for completing version ${VERSION.num} of this bad game`
+let winText = `ez amirite... well good job for completing version ${VERSION.num} - ${VERSION.name} of this bad game`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
@@ -62,6 +68,11 @@ function getPointGen() {
 	if(inChallenge('m',22)) gain = gain.pow(0.33)
 	if(hasChallenge('m',22)) gain = gain.pow(1.11)
 	if(inChallenge('m',31)) gain = gain.pow(0.5).pow(0.5)
+	if(hasUpgrade('d',12)) gain = gain.mul(upgradeEffect('d',12))
+	if(hasUpgrade('d',32)) gain = gain.pow(upgradeEffect('d',32))
+	if(hasUpgrade('d',42)) gain = gain.pow(clickableEffect('d',11).pow(0.033))
+	if(inChallenge('d',12) && new Decimal(challengeCompletions('d',12)).eq(0)) gain = gain.pow(0.5)
+	if(inChallenge('d',12) && new Decimal(challengeCompletions('d',12)).eq(1)) gain = gain.pow(0.25)
 	return gain
 }
 
@@ -71,12 +82,16 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {return "Endgame: 15,000,000 Makers"}
+	function() {
+		return "Endgame: Challenge d12x2<br>Note: There are <i>a lot</i> of ~100s (200s?) mini-timewalls" +
+		"<br>5m and no progress = Something is missing (or you're at endgame)" +
+		(player.d.unlocked ? "<br>Resource-generated resources get generated when the game is active" : "")
+	}
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player["m"].points.gte(15e6)
+	return new Decimal(challengeCompletions('d',12)).eq(2)
 }
 
 
