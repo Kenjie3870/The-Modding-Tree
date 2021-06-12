@@ -42,7 +42,8 @@ let changelog = `<h1>changelog</h1><br>
 		added some stuff<br>
 		<b>=== known insects ===</b><br>
 		reloading after getting a certain upgrade gives a random boost to pl<br>
-		if you have m43 and don't see another layer, put <i>player.d.unlocked = true</i> in console`
+		if you have m43 and don't see another layer, put <i>player.d.unlocked = true</i> in console<br>
+		d resetting m doesnt work`
 
 let winText = `ez amirite... well good job for completing version ${VERSION.num} - ${VERSION.name} of this bad game`
 

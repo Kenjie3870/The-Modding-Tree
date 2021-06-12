@@ -40,7 +40,7 @@ addLayer("m", {
     },
 
     doReset(resettingLayer) {
-        if(resettingLayer = d && layers[resettingLayer].row>this.row) {
+        if(resettingLayer = 'd' && layers[resettingLayer].row>this.row) {
             let keepArr = []
             if(hasMilestone('d',1)) {keepArr.push("milestones")}
             layerDataReset(this.layer,keepArr)
