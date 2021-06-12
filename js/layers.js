@@ -59,12 +59,12 @@ addLayer("m", {
     tabFormat: {
         "Main": {
             content: ["main-display",
-             [function() {hasUpgrade('m',32) ? "" : "prestige-button","blank"}],
+            function() {hasUpgrade('m',32) ? "" : "prestige-button","blank"},
             ["display-text", function() {return "You have <h3>"+format(player.points)+"</h3> PL."}],["microtabs","stuff"]]
         },
         "Effects": {
             content: ["main-display",
-            [function() {hasUpgrade('m',32) ? "" : "prestige-button","blank"}],
+            function() {hasUpgrade('m',32) ? "" : "prestige-button","blank"},
             ["display-text", function() {return "You have <h3>"+format(player.points)+"</h3> PL."}],"blank",
             ["infobox","bm"],["infobox","cm"],["infobox","mm"],["infobox","um"]]
         }
